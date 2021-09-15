@@ -1,5 +1,6 @@
 <?php
 
+use app\modules\admin\AdminPanel;
 use yii\rbac\DbManager;
 use yii\log\FileTarget;
 use yii\debug\Module;
@@ -19,6 +20,12 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
     ],
+    'modules' => [
+        'admin' => [
+            'class' => AdminPanel::class,
+            'layout' => 'main'
+        ],
+    ],
     'components' => [
         'authManager' => [
             'class' => DbManager::class,
@@ -27,7 +34,7 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'TauXt6omcJ9I0nW0d8BP2ifwkuDVmAKY',
-            'baseUrl'=> '',
+            'baseUrl' => '',
         ],
         'cache' => [
             'class' => FileCache::class,
