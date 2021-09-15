@@ -1,5 +1,6 @@
 <?php
 
+use yii\i18n\PhpMessageSource;
 use app\modules\admin\AdminPanel;
 use yii\rbac\DbManager;
 use yii\log\FileTarget;
@@ -16,6 +17,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'name' => 'CalcAdvProducts',
+    'language' => 'ru-RU',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
@@ -23,7 +25,7 @@ $config = [
     'modules' => [
         'admin' => [
             'class' => AdminPanel::class,
-            'layout' => 'main'
+            'layout' => 'main',
         ],
     ],
     'components' => [
@@ -67,6 +69,15 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+            ],
+        ],
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => PhpMessageSource::class,
+                    'basePath' => '@app/messages',
+//                    'sourceLanguage' => 'ru-RU',
+                ],
             ],
         ],
     ],
