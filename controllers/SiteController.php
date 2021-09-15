@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\User;
 use Yii;
+use yii\base\Exception;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -127,4 +129,22 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    /**
+     * @throws Exception
+     */
+//    public function actionAddAdmin(): void
+//    {
+//        $model = User::find()->where(['username' => 'admin'])->one();
+//        if (empty($model)) {
+//            $user = new User();
+//            $user->username = 'admin';
+//            $user->email = 'mokruy9999@gmail.com';
+//            $user->setPassword('admin');
+//            $user->generateAuthKey();
+//            if ($user->save()) {
+//                echo 'good';
+//            }
+//        }
+//    }
 }
