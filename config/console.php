@@ -1,5 +1,9 @@
 <?php
 
+use yii\rbac\DbManager;
+use yii\log\FileTarget;
+use yii\caching\FileCache;
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
@@ -14,13 +18,17 @@ $config = [
         '@tests' => '@app/tests',
     ],
     'components' => [
+        'authManager' => [
+            'class' => DbManager::class,
+            'cache' => 'cache' //Включаем кеширование
+        ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => FileCache::class,
         ],
         'log' => [
             'targets' => [
                 [
-                    'class' => 'yii\log\FileTarget',
+                    'class' => FileTarget::class,
                     'levels' => ['error', 'warning'],
                 ],
             ],

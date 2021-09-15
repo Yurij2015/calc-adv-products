@@ -1,5 +1,6 @@
 <?php
 
+use yii\rbac\DbManager;
 use yii\log\FileTarget;
 use yii\debug\Module;
 use yii\swiftmailer\Mailer;
@@ -19,6 +20,10 @@ $config = [
         '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
+        'authManager' => [
+            'class' => DbManager::class,
+            'cache' => 'cache' //Включаем кеширование
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'TauXt6omcJ9I0nW0d8BP2ifwkuDVmAKY',

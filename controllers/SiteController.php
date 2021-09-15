@@ -62,9 +62,17 @@ class SiteController extends Controller
      * Displays homepage.
      *
      * @return string
+     * @throws \Exception
      */
     public function actionIndex(): string
     {
+//        $role = Yii::$app->authManager->createRole('admin');
+//        $role->description = 'Администратор';
+//        Yii::$app->authManager->add($role);
+//
+//        $role = Yii::$app->authManager->createRole('manager');
+//        $role->description = 'Менеджер';
+//        Yii::$app->authManager->add($role);
         return $this->render('index');
     }
 
