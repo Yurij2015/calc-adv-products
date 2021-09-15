@@ -17,7 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Calculation Has Materials' => 'ttt',
+    'Calculation Has Materials' => 'Добавить материал к расчету',
     'Create Calculation Has Material' => '55',
     'Adv Prod Types' => '',
     'Are you sure you want to delete this item?' => '',
