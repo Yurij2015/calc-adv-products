@@ -11,9 +11,6 @@ $this->title = Yii::t('messages', 'Customers');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="customer-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a(Yii::t('messages', 'Create Customer'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>

@@ -18,7 +18,7 @@ use yii\helpers\Html;
             <div class="image">
                 <img src="<?= $assetDir ?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
-            <div class="info text">
+            <div class="info">
                 <a href="#" class="d-block">User: <?= Yii::$app->user->identity->username ?>
                 </a>
             </div>
@@ -34,17 +34,17 @@ use yii\helpers\Html;
                         'text-danger', 'url' => ['calculation/index']],
                     ['label' => Yii::t('messages', 'Adv Prod Types'), 'icon' => 'list', 'iconClassAdded' => 'text-info',
                         'url' => ['adv-prod-type/index']],
-                    ['label' => Yii::t('messages', 'Color'), 'icon' => 'paint-brush', 'iconClassAdded' => 'text-warning', 'url' => ['/color']],
-                    ['label' => Yii::t('messages', 'Customers'), 'icon' => 'list-alt', 'iconClassAdded' => 'text-primary', 'url' => ['/customer']],
-                    ['label' => Yii::t('messages', 'Employees'), 'icon' => 'network-wired', 'iconClassAdded' => 'text-success', 'url' => ['/employee']],
+                    ['label' => Yii::t('messages', 'Color'), 'icon' => 'paint-brush', 'iconClassAdded' => 'text-warning', 'url' => ['color/index']],
+                    ['label' => Yii::t('messages', 'Customers'), 'icon' => 'list-alt', 'iconClassAdded' => 'text-indigo', 'url' => ['customer/index']],
+                    ['label' => Yii::t('messages', 'Employees'), 'icon' => 'network-wired', 'iconClassAdded' => 'text-success', 'url' => ['employee/index']],
                     ['label' => Yii::t('messages', 'Materials'), 'icon' => 'chalkboard', 'iconClassAdded' =>
-                        'text-purple', 'url' => ['/material']],
+                        'text-purple', 'url' => ['material/index']],
                     ['label' => Yii::t('messages', 'Orders'), 'icon' => 'th-list', 'iconClassAdded' => 'text-pink',
-                        'url' => ['/order']],
+                        'url' => ['order/index']],
                     ['label' => Yii::t('messages', 'Price Lists'), 'icon' => 'file-alt', 'iconClassAdded' =>
-                        'text-cyan', 'url' => ['/price-list']],
+                        'text-cyan', 'url' => ['price-list/index']],
                     ['label' => Yii::t('messages', 'Calculation Has Materials'), 'icon' => 'list', 'iconClassAdded'
-                    => 'text-danger', 'url' => ['/calculation-has-material']],
+                    => 'text-danger', 'url' => ['calculation-has-material/index']],
                 ],
             ]);
             ?>

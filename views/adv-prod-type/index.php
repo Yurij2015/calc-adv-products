@@ -14,8 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="adv-prod-type-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a(Yii::t('messages', 'Create Adv Prod Type'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
