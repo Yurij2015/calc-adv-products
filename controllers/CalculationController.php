@@ -2,8 +2,12 @@
 
 namespace app\controllers;
 
+use app\models\AdvProdType;
 use app\models\Calculation;
 use app\models\SearchCalculation;
+use Yii;
+use yii\db\StaleObjectException;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -16,7 +20,7 @@ class CalculationController extends Controller
     /**
      * @inheritDoc
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return array_merge(
             parent::behaviors(),
@@ -59,6 +63,16 @@ class CalculationController extends Controller
         ]);
     }
 
+    public function AdvTypeDropdown(): array
+    {
+        $advprodtype = AdvProdType::find()->all();
+        $advprodtype_itmes = ArrayHelper::map($advprodtype, 'id', 'title');
+        $advprodtype_params = [
+            'prompt' => 'Выберите вид изделия'
+        ];
+        return ['advprodtype_itmes' => $advprodtype_itmes, 'advprodtype_params' => $advprodtype_params];
+    }
+
     /**
      * Creates a new Calculation model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -78,6 +92,8 @@ class CalculationController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'advprodtype_itmes' => $this->AdvTypeDropdown()['advprodtype_itmes'],
+            'advprodtype_params' => $this->AdvTypeDropdown()['advprodtype_params']
         ]);
     }
 
@@ -98,6 +114,8 @@ class CalculationController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'advprodtype_itmes' => $this->AdvTypeDropdown()['advprodtype_itmes'],
+            'advprodtype_params' => $this->AdvTypeDropdown()['advprodtype_params']
         ]);
     }
 
@@ -107,8 +125,10 @@ class CalculationController extends Controller
      * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
+     * @throws \Throwable
+     * @throws StaleObjectException
      */
-    public function actionDelete($id)
+    public function actionDelete(int $id)
     {
         $this->findModel($id)->delete();
 
@@ -122,7 +142,7 @@ class CalculationController extends Controller
      * @return Calculation the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel(int $id): Calculation
     {
         if (($model = Calculation::findOne($id)) !== null) {
             return $model;

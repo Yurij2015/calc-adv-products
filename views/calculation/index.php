@@ -28,7 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'calculationcol',
-            'adv_prod_type_id',
+//            'adv_prod_type_id',
+            ['attribute' => 'advProdType.title', 'label' => Yii::t('messages', 'Adv Prod Type ID')],
             'product_length',
             'product_width',
             'product_height',

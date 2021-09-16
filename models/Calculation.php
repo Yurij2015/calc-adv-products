@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "calculations".
@@ -38,7 +39,7 @@ class Calculation extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['adv_prod_type_id', 'color_id'], 'required'],
+            [['adv_prod_type_id'], 'required'],
             [['adv_prod_type_id', 'product_length', 'product_width', 'product_height', 'product_quantity', 'color_id', 'cost'], 'integer'],
             [['calculationcol'], 'string', 'max' => 45],
             [['adv_prod_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => AdvProdType::className(), 'targetAttribute' => ['adv_prod_type_id' => 'id']],
@@ -49,7 +50,7 @@ class Calculation extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
             'id' => Yii::t('messages', 'ID'),
@@ -67,9 +68,9 @@ class Calculation extends \yii\db\ActiveRecord
     /**
      * Gets query for [[AdvProdType]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getAdvProdType()
+    public function getAdvProdType(): ActiveQuery
     {
         return $this->hasOne(AdvProdType::className(), ['id' => 'adv_prod_type_id']);
     }
@@ -77,9 +78,9 @@ class Calculation extends \yii\db\ActiveRecord
     /**
      * Gets query for [[CalculationHasMaterials]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getCalculationHasMaterials()
+    public function getCalculationHasMaterials(): ActiveQuery
     {
         return $this->hasMany(CalculationHasMaterial::className(), ['calculation_id' => 'id']);
     }
@@ -87,9 +88,9 @@ class Calculation extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Color]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getColor()
+    public function getColor(): ActiveQuery
     {
         return $this->hasOne(Color::className(), ['id' => 'color_id']);
     }
@@ -97,9 +98,9 @@ class Calculation extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Orders]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getOrders()
+    public function getOrders(): ActiveQuery
     {
         return $this->hasMany(Order::className(), ['calculation_id' => 'id']);
     }

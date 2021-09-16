@@ -82,13 +82,13 @@ class PriceListController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'advprodtype_itmes' => $this->PriceListDropdown()['advprodtype_itmes'],
-            'advprodtype_params' => $this->PriceListDropdown()['advprodtype_params']
+            'advprodtype_itmes' => $this->AdvTypeDropdown()['advprodtype_itmes'],
+            'advprodtype_params' => $this->AdvTypeDropdown()['advprodtype_params']
         ]);
     }
 
 
-    public function PriceListDropdown(): array
+    public function AdvTypeDropdown(): array
     {
         $advprodtype = AdvProdType::find()->all();
         $advprodtype_itmes = ArrayHelper::map($advprodtype, 'id', 'title');

@@ -4,6 +4,8 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Calculation */
+/** @var array $advprodtype_itmes */
+/** @var array $advprodtype_params */
 
 $this->title = Yii::t('messages', 'Update Calculation: {name}', [
     'name' => $model->id,
@@ -18,6 +20,8 @@ $this->params['breadcrumbs'][] = Yii::t('messages', 'Update');
 
     <?= $this->render('_form', [
         'model' => $model,
+        'advprodtype_itmes' => $advprodtype_itmes,
+        'advprodtype_params' => $advprodtype_params
     ]) ?>
 
 </div>

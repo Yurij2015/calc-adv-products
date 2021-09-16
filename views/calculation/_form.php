@@ -6,6 +6,8 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Calculation */
 /* @var $form yii\widgets\ActiveForm */
+/** @var array $advprodtype_itmes */
+/** @var array $advprodtype_params */
 ?>
 
 <div class="calculation-form">
@@ -14,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'calculationcol')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'adv_prod_type_id')->textInput() ?>
+    <?= $form->field($model, 'adv_prod_type_id')->dropDownList($advprodtype_itmes, $advprodtype_params) ?>
 
     <?= $form->field($model, 'product_length')->textInput() ?>
 
@@ -23,8 +25,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'product_height')->textInput() ?>
 
     <?= $form->field($model, 'product_quantity')->textInput() ?>
-
-    <?= $form->field($model, 'color_id')->textInput() ?>
 
     <?= $form->field($model, 'cost')->textInput() ?>
 

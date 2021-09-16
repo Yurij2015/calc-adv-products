@@ -14,7 +14,7 @@ class SearchCalculation extends Calculation
     /**
      * {@inheritdoc}
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['id', 'adv_prod_type_id', 'product_length', 'product_width', 'product_height', 'product_quantity', 'color_id', 'cost'], 'integer'],
@@ -25,7 +25,7 @@ class SearchCalculation extends Calculation
     /**
      * {@inheritdoc}
      */
-    public function scenarios()
+    public function scenarios(): array
     {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
@@ -38,7 +38,7 @@ class SearchCalculation extends Calculation
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search(array $params): ActiveDataProvider
     {
         $query = Calculation::find();
 
