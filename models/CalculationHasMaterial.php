@@ -3,7 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "calculation_has_material".
@@ -15,8 +14,10 @@ use yii\db\ActiveQuery;
  * @property int|null $material_length
  * @property int|null $material_width
  * @property int|null $material_height
+ * @property int $color_id
  *
  * @property Calculation $calculation
+ * @property Color $color
  * @property Material $material
  */
 class CalculationHasMaterial extends \yii\db\ActiveRecord
@@ -35,11 +36,12 @@ class CalculationHasMaterial extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'calculation_id', 'material_id'], 'required'],
-            [['calculation_id', 'material_id', 'material_count', 'material_length', 'material_width', 'material_height'], 'integer'],
+            [['id', 'calculation_id', 'material_id', 'color_id'], 'required'],
+            [['calculation_id', 'material_id', 'material_count', 'material_length', 'material_width', 'material_height', 'color_id'], 'integer'],
             [['id'], 'string', 'max' => 45],
             [['id'], 'unique'],
             [['calculation_id'], 'exist', 'skipOnError' => true, 'targetClass' => Calculation::className(), 'targetAttribute' => ['calculation_id' => 'id']],
+            [['color_id'], 'exist', 'skipOnError' => true, 'targetClass' => Color::className(), 'targetAttribute' => ['color_id' => 'id']],
             [['material_id'], 'exist', 'skipOnError' => true, 'targetClass' => Material::className(), 'targetAttribute' => ['material_id' => 'id']],
         ];
     }
@@ -47,7 +49,7 @@ class CalculationHasMaterial extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels(): array
+    public function attributeLabels()
     {
         return [
             'id' => Yii::t('messages', 'ID'),
@@ -57,25 +59,36 @@ class CalculationHasMaterial extends \yii\db\ActiveRecord
             'material_length' => Yii::t('messages', 'Material Length'),
             'material_width' => Yii::t('messages', 'Material Width'),
             'material_height' => Yii::t('messages', 'Material Height'),
+            'color_id' => Yii::t('messages', 'Color ID'),
         ];
     }
 
     /**
      * Gets query for [[Calculation]].
      *
-     * @return ActiveQuery
+     * @return \yii\db\ActiveQuery
      */
-    public function getCalculation(): ActiveQuery
+    public function getCalculation()
     {
         return $this->hasOne(Calculation::className(), ['id' => 'calculation_id']);
     }
 
     /**
+     * Gets query for [[Color]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getColor()
+    {
+        return $this->hasOne(Color::className(), ['id' => 'color_id']);
+    }
+
+    /**
      * Gets query for [[Material]].
      *
-     * @return ActiveQuery
+     * @return \yii\db\ActiveQuery
      */
-    public function getMaterial(): ActiveQuery
+    public function getMaterial()
     {
         return $this->hasOne(Material::className(), ['id' => 'material_id']);
     }

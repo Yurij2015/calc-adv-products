@@ -1,5 +1,7 @@
 <?php
 
+use yii\grid\ActionColumn;
+use yii\grid\SerialColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -22,15 +24,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => SerialColumn::class],
 
             'id',
             'fullname',
             'email:email',
             'phonenumber',
-            'user_id',
+//            'user.username',
+            ['attribute' => 'user.username','label' => 'Пользователь'],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => ActionColumn::class],
         ],
     ]); ?>
 

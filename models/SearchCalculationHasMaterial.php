@@ -18,7 +18,7 @@ class SearchCalculationHasMaterial extends CalculationHasMaterial
     {
         return [
             [['id'], 'safe'],
-            [['calculation_id', 'material_id', 'material_count', 'material_length', 'material_width', 'material_height'], 'integer'],
+            [['calculation_id', 'material_id', 'material_count', 'material_length', 'material_width', 'material_height', 'color_id'], 'integer'],
         ];
     }
 
@@ -64,6 +64,7 @@ class SearchCalculationHasMaterial extends CalculationHasMaterial
             'material_length' => $this->material_length,
             'material_width' => $this->material_width,
             'material_height' => $this->material_height,
+            'color_id' => $this->color_id,
         ]);
 
         $query->andFilterWhere(['like', 'id', $this->id]);

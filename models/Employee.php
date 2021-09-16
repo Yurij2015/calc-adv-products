@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "employees".
@@ -43,7 +44,7 @@ class Employee extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
             'id' => Yii::t('messages', 'ID'),
@@ -57,9 +58,9 @@ class Employee extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Orders]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getOrders()
+    public function getOrders(): ActiveQuery
     {
         return $this->hasMany(Order::className(), ['employees_id' => 'id']);
     }
@@ -67,9 +68,9 @@ class Employee extends \yii\db\ActiveRecord
     /**
      * Gets query for [[User]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getUser()
+    public function getUser(): ActiveQuery
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }

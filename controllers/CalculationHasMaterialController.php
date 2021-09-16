@@ -48,7 +48,7 @@ class CalculationHasMaterialController extends Controller
 
     /**
      * Displays a single CalculationHasMaterial model.
-     * @param string $id ID
+     * @param string $id Номер
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -84,7 +84,7 @@ class CalculationHasMaterialController extends Controller
     /**
      * Updates an existing CalculationHasMaterial model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id ID
+     * @param string $id Номер
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -104,7 +104,7 @@ class CalculationHasMaterialController extends Controller
     /**
      * Deletes an existing CalculationHasMaterial model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id ID
+     * @param string $id Номер
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -118,7 +118,7 @@ class CalculationHasMaterialController extends Controller
     /**
      * Finds the CalculationHasMaterial model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $id ID
+     * @param string $id Номер
      * @return CalculationHasMaterial the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */

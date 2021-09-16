@@ -1,5 +1,7 @@
 <?php
 
+use yii\grid\ActionColumn;
+use yii\grid\SerialColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -22,19 +24,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => SerialColumn::class],
 
             'id',
             'calculationcol',
             'adv_prod_type_id',
             'product_length',
             'product_width',
-            //'product_height',
-            //'product_quantity',
-            //'color_id',
-            //'cost',
+            'product_height',
+            'product_quantity',
+//            'color_id',
+            'cost',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => ActionColumn::class],
         ],
     ]); ?>
 

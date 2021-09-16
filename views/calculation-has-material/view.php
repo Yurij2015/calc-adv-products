@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'material_length',
             'material_width',
             'material_height',
+            'color_id',
         ],
     ]) ?>
 

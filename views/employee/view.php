@@ -1,19 +1,18 @@
 <?php
 
 use yii\helpers\Html;
+use yii\web\YiiAsset;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Employee */
 
-$this->title = $model->id;
+$this->title = $model->fullname;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('messages', 'Employees'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+YiiAsset::register($this);
 ?>
 <div class="employee-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a(Yii::t('messages', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -33,7 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'fullname',
             'email:email',
             'phonenumber',
-            'user_id',
+//            'user.username',
+            ['attribute' => 'user.username','label' => 'Пользователь'],
+
         ],
     ]) ?>
 

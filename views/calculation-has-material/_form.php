@@ -26,6 +26,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'material_height')->textInput() ?>
 
+    <?= $form->field($model, 'color_id')->textInput() ?>
+
     <div class="form-group">
         <?= Html::submitButton(Yii::t('messages', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>

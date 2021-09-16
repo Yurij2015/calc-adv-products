@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\AdvProdType;
 use app\models\PriceList;
 use app\models\SearchPriceList;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -16,7 +18,7 @@ class PriceListController extends Controller
     /**
      * @inheritDoc
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return array_merge(
             parent::behaviors(),
@@ -76,8 +78,16 @@ class PriceListController extends Controller
             $model->loadDefaultValues();
         }
 
+        $advprodtype = AdvProdType::find()->all();
+        $advprodtype_itmes = ArrayHelper::map($advprodtype, 'id', 'title');
+        $advprodtype_params = [
+            'prompt' => 'Выберите вид изделия'
+        ];
+
         return $this->render('create', [
             'model' => $model,
+            'advprodtype_itmes' => $advprodtype_itmes,
+            'advprodtype_params' => $advprodtype_params
         ]);
     }
 

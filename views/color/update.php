@@ -6,15 +6,13 @@ use yii\helpers\Html;
 /* @var $model app\models\Color */
 
 $this->title = Yii::t('messages', 'Update Color: {name}', [
-    'name' => $model->id,
+    'name' => $model->color,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('messages', 'Colors'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->color, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('messages', 'Update');
 ?>
 <div class="color-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
