@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "calculation_has_material".
  *
- * @property string $id
+ * @property int $id
  * @property int $calculation_id
  * @property int $material_id
  * @property int|null $material_count
@@ -36,10 +36,8 @@ class CalculationHasMaterial extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'calculation_id', 'material_id', 'color_id'], 'required'],
+            [['calculation_id', 'material_id', 'color_id'], 'required'],
             [['calculation_id', 'material_id', 'material_count', 'material_length', 'material_width', 'material_height', 'color_id'], 'integer'],
-            [['id'], 'string', 'max' => 45],
-            [['id'], 'unique'],
             [['calculation_id'], 'exist', 'skipOnError' => true, 'targetClass' => Calculation::className(), 'targetAttribute' => ['calculation_id' => 'id']],
             [['color_id'], 'exist', 'skipOnError' => true, 'targetClass' => Color::className(), 'targetAttribute' => ['color_id' => 'id']],
             [['material_id'], 'exist', 'skipOnError' => true, 'targetClass' => Material::className(), 'targetAttribute' => ['material_id' => 'id']],

@@ -17,8 +17,7 @@ class SearchCalculationHasMaterial extends CalculationHasMaterial
     public function rules()
     {
         return [
-            [['id'], 'safe'],
-            [['calculation_id', 'material_id', 'material_count', 'material_length', 'material_width', 'material_height', 'color_id'], 'integer'],
+            [['id', 'calculation_id', 'material_id', 'material_count', 'material_length', 'material_width', 'material_height', 'color_id'], 'integer'],
         ];
     }
 
@@ -58,6 +57,7 @@ class SearchCalculationHasMaterial extends CalculationHasMaterial
 
         // grid filtering conditions
         $query->andFilterWhere([
+            'id' => $this->id,
             'calculation_id' => $this->calculation_id,
             'material_id' => $this->material_id,
             'material_count' => $this->material_count,
@@ -66,8 +66,6 @@ class SearchCalculationHasMaterial extends CalculationHasMaterial
             'material_height' => $this->material_height,
             'color_id' => $this->color_id,
         ]);
-
-        $query->andFilterWhere(['like', 'id', $this->id]);
 
         return $dataProvider;
     }

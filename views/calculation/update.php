@@ -8,15 +8,13 @@ use yii\helpers\Html;
 /** @var array $advprodtype_params */
 
 $this->title = Yii::t('messages', 'Update Calculation: {name}', [
-    'name' => $model->id,
+    'name' => $model->calculationcol,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('messages', 'Calculations'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->calculationcol, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('messages', 'Update');
 ?>
 <div class="calculation-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,

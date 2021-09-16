@@ -6,17 +6,18 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\CalculationHasMaterial */
 /* @var $form yii\widgets\ActiveForm */
+/** @var array $dropdowndata */
 ?>
 
 <div class="calculation-has-material-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'calculation_id')->dropDownList($dropdowndata['calculationdropdown']['calculation_itmes'],
+        $dropdowndata['calculationdropdown']['calculation_params']) ?>
 
-    <?= $form->field($model, 'calculation_id')->textInput() ?>
-
-    <?= $form->field($model, 'material_id')->textInput() ?>
+    <?= $form->field($model, 'material_id')->dropDownList($dropdowndata['materialdropdown']['material_itmes'],
+        $dropdowndata['materialdropdown']['material_params']) ?>
 
     <?= $form->field($model, 'material_count')->textInput() ?>
 
