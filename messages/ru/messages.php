@@ -17,7 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Adv Prod Types' => 'Виды рекламных изделий',
+    'Adv Prod Types' => 'Виды изделий',
     'Are you sure you want to delete this item?' => 'Вы уверены, что нужно удалить запись?',
     'Calculation Has Materials' => 'Материалы в расчете',
     'Calculation ID' => 'Номер расчета',
