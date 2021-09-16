@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 ?>
 <!-- Navbar -->
@@ -11,10 +12,25 @@ use yii\helpers\Html;
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?=\yii\helpers\Url::home()?>" class="nav-link">Home</a>
+            <a href="<?= Url::home() ?>" class="nav-link">Главная</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
+            <?= Html::a(Yii::t('messages', 'Calculations'), ['calculation/index'], ['class' => 'nav-link']) ?>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <?= Html::a(Yii::t('messages', 'Adv Prod Types'), ['calculation/index'], ['class' => 'nav-link']) ?>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <?= Html::a(Yii::t('messages', 'Color'), ['calculation/index'], ['class' => 'nav-link']) ?>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <?= Html::a(Yii::t('messages', 'Materials'), ['calculation/index'], ['class' => 'nav-link']) ?>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <?= Html::a(Yii::t('messages', 'Orders'), ['calculation/index'], ['class' => 'nav-link']) ?>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <?= Html::a(Yii::t('messages', 'Price Lists'), ['calculation/index'], ['class' => 'nav-link']) ?>
         </li>
     </ul>
 
