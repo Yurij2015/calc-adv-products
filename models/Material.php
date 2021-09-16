@@ -40,9 +40,9 @@ class Material extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'materialtitle' => 'Materialtitle',
-            'materialcost' => 'Materialcost',
+            'id' => Yii::t('messages', 'ID'),
+            'materialtitle' => Yii::t('messages', 'Materialtitle'),
+            'materialcost' => Yii::t('messages', 'Materialcost'),
         ];
     }
 

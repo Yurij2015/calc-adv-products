@@ -38,8 +38,8 @@ class Color extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'color' => 'Color',
+            'id' => Yii::t('messages', 'ID'),
+            'color' => Yii::t('messages', 'Color'),
         ];
     }
 

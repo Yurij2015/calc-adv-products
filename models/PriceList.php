@@ -43,10 +43,10 @@ class PriceList extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'item_name' => 'Item Name',
-            'cost' => 'Cost',
-            'adv_prod_type_id' => 'Adv Prod Type ID',
+            'id' => Yii::t('messages', 'ID'),
+            'item_name' => Yii::t('messages', 'Item Name'),
+            'cost' => Yii::t('messages', 'Cost'),
+            'adv_prod_type_id' => Yii::t('messages', 'Adv Prod Type ID'),
         ];
     }
 

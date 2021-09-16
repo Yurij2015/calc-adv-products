@@ -3,7 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "adv_prod_types".
@@ -20,7 +19,7 @@ class AdvProdType extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public static function tableName(): string
+    public static function tableName()
     {
         return 'adv_prod_types';
     }
@@ -28,7 +27,7 @@ class AdvProdType extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function rules(): array
+    public function rules()
     {
         return [
             [['title'], 'string', 'max' => 145],
@@ -39,21 +38,21 @@ class AdvProdType extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels(): array
+    public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
+            'id' => Yii::t('messages', 'ID'),
+            'title' => Yii::t('messages', 'Title'),
+            'description' => Yii::t('messages', 'Description'),
         ];
     }
 
     /**
      * Gets query for [[Calculations]].
      *
-     * @return ActiveQuery
+     * @return \yii\db\ActiveQuery
      */
-    public function getCalculations(): ActiveQuery
+    public function getCalculations()
     {
         return $this->hasMany(Calculation::className(), ['adv_prod_type_id' => 'id']);
     }
@@ -61,9 +60,9 @@ class AdvProdType extends \yii\db\ActiveRecord
     /**
      * Gets query for [[PriceLists]].
      *
-     * @return ActiveQuery
+     * @return \yii\db\ActiveQuery
      */
-    public function getPriceLists(): ActiveQuery
+    public function getPriceLists()
     {
         return $this->hasMany(PriceList::className(), ['adv_prod_type_id' => 'id']);
     }

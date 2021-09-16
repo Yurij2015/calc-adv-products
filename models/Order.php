@@ -23,7 +23,7 @@ class Order extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public static function tableName(): string
+    public static function tableName()
     {
         return 'orders';
     }
@@ -50,12 +50,12 @@ class Order extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'orderdate' => 'Orderdate',
-            'ordercol' => 'Ordercol',
-            'calculation_id' => 'Calculation ID',
-            'employees_id' => 'Employees ID',
-            'customer_id' => 'Customer ID',
+            'id' => Yii::t('messages', 'ID'),
+            'orderdate' => Yii::t('messages', 'Orderdate'),
+            'ordercol' => Yii::t('messages', 'Ordercol'),
+            'calculation_id' => Yii::t('messages', 'Calculation ID'),
+            'employees_id' => Yii::t('messages', 'Employees ID'),
+            'customer_id' => Yii::t('messages', 'Customer ID'),
         ];
     }
 

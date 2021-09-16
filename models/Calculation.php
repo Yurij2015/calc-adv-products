@@ -52,15 +52,15 @@ class Calculation extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'calculationcol' => 'Calculationcol',
-            'adv_prod_type_id' => 'Adv Prod Type ID',
-            'product_length' => 'Product Length',
-            'product_width' => 'Product Width',
-            'product_height' => 'Product Height',
-            'product_quantity' => 'Product Quantity',
-            'color_id' => 'Color ID',
-            'cost' => 'Cost',
+            'id' => Yii::t('messages', 'ID'),
+            'calculationcol' => Yii::t('messages', 'Calculationcol'),
+            'adv_prod_type_id' => Yii::t('messages', 'Adv Prod Type ID'),
+            'product_length' => Yii::t('messages', 'Product Length'),
+            'product_width' => Yii::t('messages', 'Product Width'),
+            'product_height' => Yii::t('messages', 'Product Height'),
+            'product_quantity' => Yii::t('messages', 'Product Quantity'),
+            'color_id' => Yii::t('messages', 'Color ID'),
+            'cost' => Yii::t('messages', 'Cost'),
         ];
     }
 
