@@ -49,13 +49,13 @@ class CalculationHasMaterial extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'calculation_id' => 'Calculation ID',
-            'material_id' => 'Material ID',
-            'material_count' => 'Material Count',
-            'material_length' => 'Material Length',
-            'material_width' => 'Material Width',
-            'material_height' => 'Material Height',
+            'id' => Yii::t('messages', 'ID'),
+            'calculation_id' => Yii::t('messages', 'Calculation ID'),
+            'material_id' => Yii::t('messages', 'Material ID'),
+            'material_count' => Yii::t('messages', 'Material Count'),
+            'material_length' => Yii::t('messages', 'Material Length'),
+            'material_width' => Yii::t('messages', 'Material Width'),
+            'material_height' => Yii::t('messages', 'Material Height'),
         ];
     }
 

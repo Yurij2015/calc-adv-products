@@ -12,8 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="calculation-has-material-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a(Yii::t('messages', 'Create Calculation Has Material'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
