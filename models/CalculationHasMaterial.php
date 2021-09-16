@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "calculation_has_material".
@@ -46,7 +47,7 @@ class CalculationHasMaterial extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
             'id' => Yii::t('messages', 'ID'),
@@ -62,9 +63,9 @@ class CalculationHasMaterial extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Calculation]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getCalculation()
+    public function getCalculation(): ActiveQuery
     {
         return $this->hasOne(Calculation::className(), ['id' => 'calculation_id']);
     }
@@ -72,9 +73,9 @@ class CalculationHasMaterial extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Material]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getMaterial()
+    public function getMaterial(): ActiveQuery
     {
         return $this->hasOne(Material::className(), ['id' => 'material_id']);
     }
