@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\PriceList */
 
-$this->title = $model->id;
+$this->title = $model->item_name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('messages', 'Price Lists'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 YiiAsset::register($this);
@@ -31,7 +31,8 @@ YiiAsset::register($this);
             'id',
             'item_name',
             'cost',
-            'adv_prod_type_id',
+//            'adv_prod_type_id',
+            ['attribute' => 'advProdType.title', 'label' => Yii::t('messages', 'Adv Prod Type ID')],
         ],
     ]) ?>
 

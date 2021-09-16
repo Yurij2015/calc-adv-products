@@ -5,6 +5,8 @@ namespace app\controllers;
 use app\models\AdvProdType;
 use app\models\PriceList;
 use app\models\SearchPriceList;
+use Yii;
+use yii\db\StaleObjectException;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -54,7 +56,7 @@ class PriceListController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView(int $id)
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -124,8 +126,10 @@ class PriceListController extends Controller
      * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
+     * @throws \Throwable
+     * @throws StaleObjectException
      */
-    public function actionDelete($id)
+    public function actionDelete(int $id)
     {
         $this->findModel($id)->delete();
 
@@ -139,7 +143,7 @@ class PriceListController extends Controller
      * @return PriceList the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel(int $id): PriceList
     {
         if (($model = PriceList::findOne($id)) !== null) {
             return $model;

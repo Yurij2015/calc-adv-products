@@ -8,6 +8,8 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\PriceList */
 /* @var $form yii\widgets\ActiveForm */
+/** @var array $advprodtype_itmes */
+/** @var array $advprodtype_params */
 ?>
 
 <div class="price-list-form">
@@ -18,8 +20,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cost')->textInput() ?>
 
-    <?= $form->field($model, 'adv_prod_type_id')->dropDownList($advprodtype_itmes, $advprodtype_params) ?>
+    <?=
 
+    $form->field($model, 'adv_prod_type_id')->dropDownList($advprodtype_itmes, $advprodtype_params) ?>
     <div class="form-group">
         <?= Html::submitButton(Yii::t('messages', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "price_list".
@@ -19,7 +20,7 @@ class PriceList extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
+    public static function tableName(): string
     {
         return 'price_list';
     }
@@ -40,7 +41,7 @@ class PriceList extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
             'id' => Yii::t('messages', 'ID'),
@@ -53,9 +54,9 @@ class PriceList extends \yii\db\ActiveRecord
     /**
      * Gets query for [[AdvProdType]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getAdvProdType()
+    public function getAdvProdType(): ActiveQuery
     {
         return $this->hasOne(AdvProdType::className(), ['id' => 'adv_prod_type_id']);
     }
