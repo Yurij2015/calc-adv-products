@@ -16,8 +16,13 @@ $this->params['breadcrumbs'][] = Yii::t('messages', 'Update');
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
+    <?=
+    /** @var array $advprodtype_itmes */
+    /** @var array $advprodtype_params */
+    $this->render('_form', [
         'model' => $model,
+        'advprodtype_itmes' => $advprodtype_itmes,
+        'advprodtype_params' => $advprodtype_params
     ]) ?>
 
 </div>

@@ -78,17 +78,22 @@ class PriceListController extends Controller
             $model->loadDefaultValues();
         }
 
+        return $this->render('create', [
+            'model' => $model,
+            'advprodtype_itmes' => $this->PriceListDropdown()['advprodtype_itmes'],
+            'advprodtype_params' => $this->PriceListDropdown()['advprodtype_params']
+        ]);
+    }
+
+
+    public function PriceListDropdown(): array
+    {
         $advprodtype = AdvProdType::find()->all();
         $advprodtype_itmes = ArrayHelper::map($advprodtype, 'id', 'title');
         $advprodtype_params = [
             'prompt' => 'Выберите вид изделия'
         ];
-
-        return $this->render('create', [
-            'model' => $model,
-            'advprodtype_itmes' => $advprodtype_itmes,
-            'advprodtype_params' => $advprodtype_params
-        ]);
+        return ['advprodtype_itmes' => $advprodtype_itmes, 'advprodtype_params' => $advprodtype_params];
     }
 
     /**
@@ -108,6 +113,8 @@ class PriceListController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'advprodtype_itmes' => $this->PriceListDropdown()['advprodtype_itmes'],
+            'advprodtype_params' => $this->PriceListDropdown()['advprodtype_params']
         ]);
     }
 
@@ -141,3 +148,4 @@ class PriceListController extends Controller
         throw new NotFoundHttpException(Yii::t('messages', 'The requested page does not exist.'));
     }
 }
+

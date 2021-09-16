@@ -18,8 +18,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cost')->textInput() ?>
 
-    <?= $form->field($model, 'adv_prod_type_id')->textInput() ?>
-
     <?= $form->field($model, 'adv_prod_type_id')->dropDownList($advprodtype_itmes, $advprodtype_params) ?>
 
     <div class="form-group">

@@ -11,7 +11,10 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="price-list-create">
 
-    <?= $this->render('_form', [
+    <?=
+    /** @var array $advprodtype_itmes */
+    /** @var array $advprodtype_params */
+    $this->render('_form', [
         'model' => $model,
         'advprodtype_itmes' => $advprodtype_itmes,
         'advprodtype_params' => $advprodtype_params
