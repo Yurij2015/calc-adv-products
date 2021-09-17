@@ -41,4 +41,47 @@ YiiAsset::register($this);
         ],
     ]) ?>
 
+    <?php $items = $model->calculationHasMaterials ?>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Материалы в расчете</h3>
+                </div>
+                <div class="box-body">
+                    <table class="table table-striped table-bordered detail-view">
+                        <tbody>
+                        <tr>
+                            <th><?=Yii::t('messages', 'ID')?></th>
+                            <th><?=Yii::t('messages', 'Calculation ID')?></th>
+                            <th><?=Yii::t('messages', 'Material ID')?></th>
+                            <th><?=Yii::t('messages', 'Cost')?></th>
+                            <th><?=Yii::t('messages', 'Material Count')?></th>
+                            <th><?=Yii::t('messages', 'Material Length')?></th>
+                            <th><?=Yii::t('messages', 'Material Width')?></th>
+                            <th><?=Yii::t('messages', 'Material Height')?></th>
+                            <th><?=Yii::t('messages', 'Color')?></th>
+
+                        </tr>
+                        <?php foreach ($items as $item): ?>
+                            <tr>
+                                <td><?= $item->id ?></td>
+                                <td><?= $item->calculation->calculationcol ?></td>
+                                <td><?= $item->material->materialtitle ?></td>
+                                <td><?= $item->material->materialcost ?></td>
+                                <td><?= $item->material_count ?></td>
+                                <td><?= $item->material_length ?></td>
+                                <td><?= $item->material_width ?></td>
+                                <td><?= $item->material_height ?></td>
+                                <td><?= $item->color->color ?></td>
+
+                            </tr>
+                        <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\CalculationHasMaterial */
 
-$this->title = $model->id;
+$this->title = $model->calculation->calculationcol;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('messages', 'Calculation Has Materials'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 YiiAsset::register($this);
@@ -29,13 +29,13 @@ YiiAsset::register($this);
         'model' => $model,
         'attributes' => [
             'id',
-            'calculation_id',
-            'material_id',
+            'calculation.calculationcol',
+            'material.materialtitle',
             'material_count',
             'material_length',
             'material_width',
             'material_height',
-            'color_id',
+            'color.color',
         ],
     ]) ?>
 

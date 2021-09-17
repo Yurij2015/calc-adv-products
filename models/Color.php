@@ -2,7 +2,9 @@
 
 namespace app\models;
 
+use phpDocumentor\Reflection\Types\Mixed_;
 use Yii;
+use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "colors".
@@ -17,7 +19,7 @@ class Color extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
+    public static function tableName(): string
     {
         return 'colors';
     }
@@ -25,7 +27,7 @@ class Color extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['color'], 'string', 'max' => 80],
@@ -46,9 +48,9 @@ class Color extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Calculations]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getCalculations()
+    public function getCalculations(): ActiveQuery
     {
         return $this->hasMany(Calculation::className(), ['color_id' => 'id']);
     }

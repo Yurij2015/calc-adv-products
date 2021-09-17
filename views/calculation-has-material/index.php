@@ -27,13 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => SerialColumn::class],
 
             'id',
-            'calculation_id',
-            'material_id',
+            'calculation.calculationcol',
+            'material.materialtitle',
             'material_count',
             'material_length',
             'material_width',
             'material_height',
-            'color_id',
+            'color.color',
 
             ['class' => ActionColumn::class],
         ],
