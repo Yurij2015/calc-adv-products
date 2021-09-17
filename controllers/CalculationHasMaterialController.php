@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Calculation;
 use app\models\CalculationHasMaterial;
+use app\models\Color;
 use app\models\Material;
 use app\models\SearchCalculationHasMaterial;
 use Yii;
@@ -84,11 +85,22 @@ class CalculationHasMaterialController extends Controller
         return ['material_itmes' => $material_itmes, 'material_params' => $material_params];
     }
 
+    public function ColorDropdown(): array
+    {
+        $color = Color::find()->all();
+        $color_itmes = ArrayHelper::map($color, 'id', 'color');
+        $color_params = [
+            'prompt' => 'Выберите цвет'
+        ];
+        return ['color_itmes' => $color_itmes, 'color_params' => $color_params];
+    }
+
     public function CalculationHasMaterialDropdown(): array
     {
         return [
             'calculationdropdown' => $this->CalculationDropdown(),
-            'materialdropdown' => $this->MaterialDropdown()
+            'materialdropdown' => $this->MaterialDropdown(),
+            'colordropdown' => $this->ColorDropdown()
         ];
     }
 
@@ -122,7 +134,7 @@ class CalculationHasMaterialController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate(int $id)
     {
         $model = $this->findModel($id);
 
