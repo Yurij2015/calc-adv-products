@@ -29,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'orderdate',
             'ordercol',
-            'calculation_id',
-            'employees_id',
-            'customer_id',
+            'calculation.calculationcol',
+            'employees.fullname',
+            'customer.fullname',
 
             ['class' => ActionColumn::class],
         ],

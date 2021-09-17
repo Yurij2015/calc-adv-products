@@ -6,14 +6,12 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Order */
 
-$this->title = $model->id;
+$this->title = $model->ordercol;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('messages', 'Orders'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="order-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a(Yii::t('messages', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -32,9 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'orderdate',
             'ordercol',
-            'calculation_id',
-            'employees_id',
-            'customer_id',
+            'calculation.calculationcol',
+            ['attribute' => 'employees.fullname', 'label' => Yii::t('messages', 'Employee FullName')],
+            ['attribute' => 'customer.fullname', 'label' => Yii::t('messages', 'Customer FullName')],
         ],
     ]) ?>
 

@@ -81,4 +81,9 @@ return [
     'Update Order: {name}' => 'Обновить данные заказа: {name}',
     'Update Price List: {name}' => 'Обновить данные записи в прайс-листе: {name}',
     'User ID' => 'Пользователь',
+    'Employee FullName' => 'ФИО сотрудника',
+    'Customer FullName' => 'ФИО клиента',
+    'FullPrice' => 'Стоимость материала',
+    '(empty)' => '(не задано)',
+    'Full Price' => 'Полная стоимость рекламного изделия:'
 ];

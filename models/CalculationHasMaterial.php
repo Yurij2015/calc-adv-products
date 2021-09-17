@@ -91,4 +91,10 @@ class CalculationHasMaterial extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Material::className(), ['id' => 'material_id']);
     }
+
+    public function materialPrice()
+    {
+        return ($this->material->materialcost ?: 0) * ($this->material_count ?: 1) *
+            ($this->material_length ?: 1) * ($this->material_height ?: 1) * ($this->material_width ?: 1);
+    }
 }

@@ -179,4 +179,5 @@ class CalculationHasMaterialController extends Controller
 
         throw new NotFoundHttpException(Yii::t('messages', 'The requested page does not exist.'));
     }
+
 }

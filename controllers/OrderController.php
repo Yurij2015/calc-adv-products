@@ -2,8 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\Calculation;
+use app\models\Customer;
+use app\models\Employee;
 use app\models\Order;
 use app\models\SearchOrder;
+use Yii;
+use yii\db\StaleObjectException;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -16,7 +22,7 @@ class OrderController extends Controller
     /**
      * @inheritDoc
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return array_merge(
             parent::behaviors(),
@@ -52,11 +58,51 @@ class OrderController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView(int $id)
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+    public function CalculationDropdown(): array
+    {
+        $calculation = Calculation::find()->all();
+        $calculation_itmes = ArrayHelper::map($calculation, 'id', 'calculationcol');
+        $calculation_params = [
+            'prompt' => 'Выберите расчет'
+        ];
+        return ['calculation_itmes' => $calculation_itmes, 'calculation_params' => $calculation_params];
+    }
+
+    public function EmployeeDropdown(): array
+    {
+        $employee = Employee::find()->all();
+        $employee_itmes = ArrayHelper::map($employee, 'id', 'fullname');
+        $employee_params = [
+            'prompt' => 'Выберите сотрудника'
+        ];
+        return ['calculation_itmes' => $employee_itmes, 'calculation_params' => $employee_params];
+    }
+
+    public function CustomerDropdown(): array
+    {
+        $customer = Customer::find()->all();
+        $customer_itmes = ArrayHelper::map($customer, 'id', 'fullname');
+        $customer_params = [
+            'prompt' => 'Выберите клиента'
+        ];
+        return ['calculation_itmes' => $customer_itmes, 'calculation_params' => $customer_params];
+    }
+
+
+    public function OrderDropdown(): array
+    {
+        return [
+            'calculationdropdown' => $this->CalculationDropdown(),
+            'employeedropdown' => $this->EmployeeDropdown(),
+            'customerdropdown' => $this->CustomerDropdown()
+        ];
     }
 
     /**
@@ -78,6 +124,7 @@ class OrderController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'orderdropdown' => $this->OrderDropdown()
         ]);
     }
 
@@ -88,7 +135,7 @@ class OrderController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate(int $id)
     {
         $model = $this->findModel($id);
 
@@ -98,6 +145,7 @@ class OrderController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'orderdropdown' => $this->OrderDropdown()
         ]);
     }
 
@@ -107,8 +155,10 @@ class OrderController extends Controller
      * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
+     * @throws \Throwable
+     * @throws StaleObjectException
      */
-    public function actionDelete($id)
+    public function actionDelete(int $id)
     {
         $this->findModel($id)->delete();
 
@@ -122,7 +172,7 @@ class OrderController extends Controller
      * @return Order the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel(int $id): Order
     {
         if (($model = Order::findOne($id)) !== null) {
             return $model;

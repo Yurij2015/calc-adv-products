@@ -42,6 +42,7 @@ YiiAsset::register($this);
     ]) ?>
 
     <?php $items = $model->calculationHasMaterials ?>
+    <?php $FullMaterialPrice = 0; ?>
     <div class="row">
         <div class="col-md-12">
             <div class="box">
@@ -52,31 +53,36 @@ YiiAsset::register($this);
                     <table class="table table-striped table-bordered detail-view">
                         <tbody>
                         <tr>
-                            <th><?=Yii::t('messages', 'ID')?></th>
-                            <th><?=Yii::t('messages', 'Calculation ID')?></th>
-                            <th><?=Yii::t('messages', 'Material ID')?></th>
-                            <th><?=Yii::t('messages', 'Cost')?></th>
-                            <th><?=Yii::t('messages', 'Material Count')?></th>
-                            <th><?=Yii::t('messages', 'Material Length')?></th>
-                            <th><?=Yii::t('messages', 'Material Width')?></th>
-                            <th><?=Yii::t('messages', 'Material Height')?></th>
-                            <th><?=Yii::t('messages', 'Color')?></th>
-
+                            <th><?= Yii::t('messages', 'ID') ?></th>
+                            <th><?= Yii::t('messages', 'Material ID') ?></th>
+                            <th><?= Yii::t('messages', 'Cost') ?></th>
+                            <th><?= Yii::t('messages', 'Material Count') ?></th>
+                            <th><?= Yii::t('messages', 'Material Length') ?></th>
+                            <th><?= Yii::t('messages', 'Material Width') ?></th>
+                            <th><?= Yii::t('messages', 'Material Height') ?></th>
+                            <th><?= Yii::t('messages', 'Color') ?></th>
+                            <th><?= Yii::t('messages', 'FullPrice') ?></th>
                         </tr>
                         <?php foreach ($items as $item): ?>
                             <tr>
                                 <td><?= $item->id ?></td>
-                                <td><?= $item->calculation->calculationcol ?></td>
                                 <td><?= $item->material->materialtitle ?></td>
                                 <td><?= $item->material->materialcost ?></td>
                                 <td><?= $item->material_count ?></td>
-                                <td><?= $item->material_length ?></td>
-                                <td><?= $item->material_width ?></td>
-                                <td><?= $item->material_height ?></td>
+                                <td><?= $item->material_length ?? Yii::t('messages', '(empty)') ?></td>
+                                <td><?= $item->material_width ?? Yii::t('messages', '(empty)') ?></td>
+                                <td><?= $item->material_height ?? Yii::t('messages', '(empty)') ?></td>
                                 <td><?= $item->color->color ?></td>
-
+                                <td><?= $item->materialPrice() ?></td>
+                                <?php $FullMaterialPrice += $item->materialPrice() ?>
                             </tr>
                         <?php endforeach ?>
+                        <tr class="text-bold text-red">
+                            <td colspan="8"><?=Yii::t('messages', 'Full Price')?></td>
+                            <td >
+                                <?= $FullMaterialPrice ?>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
