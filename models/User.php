@@ -22,6 +22,9 @@ use yii\db\ActiveRecord;
  * @property integer $updated_at
  * @property-read string $authKey
  * @property string $password write-only password
+ * @property string $USER [char(32)]
+ * @property int $CURRENT_CONNECTIONS [bigint]
+ * @property int $TOTAL_CONNECTIONS [bigint]
  */
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
