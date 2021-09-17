@@ -115,8 +115,8 @@ class PriceListController extends Controller
 
         return $this->render('update', [
             'model' => $model,
-            'advprodtype_itmes' => $this->PriceListDropdown()['advprodtype_itmes'],
-            'advprodtype_params' => $this->PriceListDropdown()['advprodtype_params']
+            'advprodtype_itmes' => $this->AdvTypeDropdown()['advprodtype_itmes'],
+            'advprodtype_params' => $this->AdvTypeDropdown()['advprodtype_params']
         ]);
     }
 
